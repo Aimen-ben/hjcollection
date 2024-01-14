@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Boutique{% endblock %}
+
+{% block body %}
+{% include "partials/_headerBoutique.html.twig" %}
+
+<section id="product1" class="section-p1">
+    <div class="container">
+        <div class="row">
+            {% for product in products %}
+            <div class="col-lg-4 col-md-6">
+              <a href="{{ path('products_details', {'slug': product.slug}) }}">
+                <div class="card">
+                  {% if product.getImages()|length > 0 %}
+                  <img src="{{ asset('uploads/products/mini/250x250-' ~ product.images[0].name ) }}" class="card-img-top" alt="{{ product.name }}">
+                  {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title text-center">{{ product.name }}</h5>
+                    </div>
+                    <h4>{{ product.price / 100}}€</h4>
+                </div>
+            </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<section id="pagination" class=" d-flex justify-content-center mb-8">
+  {{ knp_pagination_render(products) }}
+</section>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails {{product.name}}{% endblock %}
+
+{% block body %}
+    <section id="prodetails" class="section-p1">
+        <div class="single-pro-image">
+            {% if product.getImages()|length > 0 %}
+                <img src="{{ asset('uploads/products/mini/250x250-' ~ product.images[0].name ) }}"
+                     width="80%" id="MainImg" alt="{{ product.name }}">
+            {% endif %}
+            <div class="small-img-group">
+                {% for image in product.images %}
+                    <div class="small-img-col">
+                        <img src="{{ asset('uploads/products/mini/250x250-' ~ image.name) }}"
+                             width="80%" class="small-img" alt="{{ product.name }}">
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+       
+        <div class="single-pro-details">
+            <h6><a class="active" href="{{path('main')}}">Accueil</a>/ <a href="{{path('products_index')}}">boutique</a></h6>
+            <h4>{{product.name}}</h4>
+            <h2>{{product.price / 100}} €</h2>
+      
+            <input type="number" value="1">
+            <a href="{{ path('cart_add', {id: product.id}) }}" class="btn btn-success">Ajouter</a>
+            <h4>Détail du produit:  {{product.name}} </h4>
+            <span>{{product.description}}</span>
+        </div>
+    </section>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{asset('js/script.js')}}" defer></script>
+{% endblock %}
+
+

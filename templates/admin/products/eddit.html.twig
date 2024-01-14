@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier produit{% endblock %}
+
+{% block body %}
+    <h1 class ='text-center'>Modifier un produit</h1>
+    <section class="container">
+      {% include "admin/products/_form.html.twig" with {'button_label': 'Modifier'} %}
+    </section>
+{% endblock body %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/images.js') }}" defer></script>
+{% endblock %}

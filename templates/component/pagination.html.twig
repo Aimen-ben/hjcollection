@@ -1,0 +1,21 @@
+
+{% set isBoutiqueRoute = app.request.get('_route') == 'boutique' %}
+{% if isBoutiqueRoute %}
+    {% set paginationRoute = 'boutique' %}
+{% else %}
+    {% set paginationRoute = 'categories' %}
+{% endif %}
+
+<section id="pagination" class="section-p1">
+    {% if articles.currentPageNumber > 1 %}
+        <a href="{{ path(paginationRoute, {'page': articles.currentPageNumber - 1}) }}">
+            <i class="fas fa-long-arrow-alt-left"></i>
+        </a>
+    {% endif %}
+    
+    {% if articles.currentPageNumber < articles.totalItemCount / articles.getItemNumberPerPage %}
+        <a href="{{ path(paginationRoute, {'page': articles.currentPageNumber + 1}) }}">
+            <i class="fas fa-long-arrow-alt-right"></i>
+        </a>
+    {% endif %}
+</section>

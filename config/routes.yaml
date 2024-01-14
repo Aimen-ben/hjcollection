@@ -3,3 +3,13 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
+
+# boutique:
+#     path: /boutique
+#     controller: App\Controller\BoutiqueController::boutique
+#     methods: ['GET']
+
+# categories:
+#     path: /boutique/categories
+#     controller: App\Controller\BoutiqueController::categorie
+#     methods: ['GET']
